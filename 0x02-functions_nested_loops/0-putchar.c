@@ -5,13 +5,15 @@
  * Return : 0
  */
 
-void main()
+int main()
 {
 	char word[] = "_putchar";
+	int i;
 
-	while (true)
+	i = 0;
+	while (1)
 	{
-		if (word[i] != "\0")
+		if (word[i] != '\0')
 		{
 			_putchar(word[i]);
 			i++;
@@ -20,6 +22,7 @@ void main()
 		{
 			break;
 		}
-	return 0;
 	}
+	_putchar('\n');
+	return (0);
 }
