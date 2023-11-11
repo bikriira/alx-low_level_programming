@@ -2,10 +2,10 @@
 
 /**
  * main - consists of codes that prints _putchar, followed by a new line.
- * Return : 0
+ * Return : returns 0 on success
  */
 
-int main()
+int main(void)
 {
 	char word[] = "_putchar";
 	int i;
