@@ -2,7 +2,7 @@
 
 /**
  * main - consists of codes that prints _putchar, followed by a new line.
- * Return : returns 0 on success
+ * Return: returns 0 on success
  */
 
 int main(void)
