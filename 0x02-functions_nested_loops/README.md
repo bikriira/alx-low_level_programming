@@ -1,9 +1,9 @@
-# C Programming - Functions and Nested Loops
+# What we have covered:
 
-## Compiler and Options
-
-All the code examples in this directory are intended to be compiled on Ubuntu 20.04 LTS using the `gcc` compiler with the following options:
-
-```bash
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 your_source_file.c -o your_executable
-
+What are nested loops and how to use them
+What is a function and how do you use functions
+What is the difference between a declaration and a definition of a function
+What is a prototype
+Scope of variables
+What are the gcc flags -Wall -Werror -pedantic -Wextra -std=gnu89
+What are header files and how to to use them with #include
