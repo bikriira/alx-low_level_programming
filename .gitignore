@@ -1,4 +1,4 @@
 *.swp
 [a-z]
-*main.c
+main.c
 vgcore
