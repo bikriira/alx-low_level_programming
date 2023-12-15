@@ -3,7 +3,7 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers : prints numbers, followed by a new line
+ * print_numbers - prints numbers, followed by a new line
  * @separator: comma space
  * @n: elements to be printed
  * Return: void
