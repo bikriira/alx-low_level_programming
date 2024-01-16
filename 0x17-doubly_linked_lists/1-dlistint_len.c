@@ -2,7 +2,7 @@
 
 
 /**
- * print_dlistint - Return the number of nodes(elements) in a list
+ * dlistint_len - Return the number of nodes(elements) in a list
  * @h: Address to the first node
  *
  * Return: Number of nodes
