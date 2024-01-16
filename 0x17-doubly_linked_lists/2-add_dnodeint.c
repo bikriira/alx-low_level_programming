@@ -1,40 +1,29 @@
 #include "lists.h"
 
-/**
- * add_dnodeint - function that adds new node at begininning of a dbly,
- * linked list.
- * @head: pointer to pointer to head of list.
- * @n: data to be added.
- *
- * Return: the address of the new element, or NULL if it failed.
- */
 
+/**
+ * add_dnodeint - Adds a new node at the beginning of a dlistint_t list
+ * @head: The Address of the list's head
+ * @n: The number to be stored in the new node
+ *
+ * Return: The address of the new element, or NULL if it failed
+ */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *new_node;
+	dlistint_t *my_node = malloc(sizeof(dlistint_t));
 
-	/* allocate memory for new node */
-	new_node = malloc(sizeof(dlistint_t));
-
-	/* if it fails return NULL */
-	if (new_node == NULL)
+	if (my_node == NULL)
 		return (NULL);
 
-	/* assign data to new node */
-	new_node->n = n;
+	my_node->n = n;
+	my_node->prev = NULL;
 
-	/* point next of newNode to the first node of the doubly linked list */
-	new_node->next = *head;
+	if (*root == NULL)
+		my_node->next = NULL;
+	else
+		my_node->next = *root;
 
-	/* point previous of new node to NULL */
-	new_node->prev = NULL;
+	*root = my_node;
 
-	/* point prev of 1st node (now 1st node is the second node) to new node */
-	if ((*head) != NULL)
-		(*head)->prev = new_node;
-
-	/* head points to newNode */
-	(*head) = new_node;
-
-	return (new_node);
+	return (*root);
 }
