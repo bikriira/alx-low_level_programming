@@ -10,13 +10,12 @@
 size_t print_dlistint(const dlistint_t *h)
 {
 	size_t count = 0;
-	dlistint_t curr = *h;
 
-	while (curr != NULL)
+	while (h != NULL)
 	{
-		printf("%d", curr->n);
+		printf("%d\n", h->n);
 		count++;
-		curr = curr->next;
+		h = h->next;
 	}
 	return (count);
 }
