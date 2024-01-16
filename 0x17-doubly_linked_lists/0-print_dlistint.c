@@ -1,22 +1,22 @@
 #include "lists.h"
 
-/**
- * print_dlistint - function that prints all the elemts of a doubly linked list
- * @h: poiner to the head of the list
- *
- * Return: number of nodes
- */
 
+/**
+ * print_dlistint - Prints all the elements of a dlistint_t list
+ * @h: Address to the first node
+ *
+ * Return: Number of nodes
+ */
 size_t print_dlistint(const dlistint_t *h)
 {
 	size_t count = 0;
+	curr = *h;
 
-	/* while we have a pointer to the list */
-	while (h != NULL)
+	while (curr != NULL)
 	{
-		printf("%d\n", h->n);
+		printf("%d", curr->n);
 		count++;
-		h = h->next;
+		curr = curr->next;
 	}
-	return (count);
+	return count;
 }
