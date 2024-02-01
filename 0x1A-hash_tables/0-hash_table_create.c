@@ -21,11 +21,8 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (table->array == NULL)
 		return (NULL);
 
-	while (i > size)
-	{
-		table->array[i] = NULL;
-		i++;
-	}
+	for (i = 0; i < size; i++)
+		ht->array[i] = NULL;
 
 	return (table);
 }
