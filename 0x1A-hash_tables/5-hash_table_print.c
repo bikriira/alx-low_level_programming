@@ -24,21 +24,15 @@ void hash_table_print(const hash_table_t *ht)
 	{
 		if (ht->array[i])
 		{
-			if (execute == 1)
-				printf(", ");
-
-			printf("'%s': '%s'", ht->array[i]->key, ht->array[i]->value);
-			if (ht->array[i]->next != NULL)
+			current = ht->array[i];
+			while (current != NULL)
 			{
-				current = ht->array[i]->next;
-				while (current != NULL)
-				{
+				if (execute == 1)
 					printf(", ");
-					printf("'%s': '%s'", current->key, current->value);
-					current = current->next;
-				}
+				printf("'%s': '%s'", current->key, current->value);
+				execute = 1;
+				current = current->next;
 			}
-			execute = 1;
 		}
 	}
 	printf("}\n");
