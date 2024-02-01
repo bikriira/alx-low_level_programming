@@ -33,9 +33,8 @@ void hash_table_print(const hash_table_t *ht)
 				current = ht->array[i]->next;
 				while (current != NULL)
 				{
-					printf("'%s': '%s'", ht->array[i]->key, ht->array[i]->value);
-					if (current->next != NULL)
-						printf(", ");
+					printf(", ");
+					printf("'%s': '%s'", current->key, current->value);
 					current = current->next;
 				}
 			}
