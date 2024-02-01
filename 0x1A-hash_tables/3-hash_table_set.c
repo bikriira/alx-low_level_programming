@@ -1,12 +1,20 @@
 #include "hash_tables.h"
 
 
+/**
+ * hash_table_set - A function that adds an element to the hash table
+ * @ht: The hash table
+ * @key: The key of the element
+ * @value: The value of the element
+ *
+ * Return: 1 if it succeeded, 0 otherwise
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *element = malloc(sizeof(hash_node_t));
 	unsigned long int element_index;
 
-	if (element == NULL || strlen(key) == 0)
+	if (element == NULL || strlen(key) == 0 || ht == NULL)
 		return (0);
 
 	element->key = strdup(key);
