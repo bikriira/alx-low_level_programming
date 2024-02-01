@@ -18,6 +18,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	if (ht == NULL || ht->array[elem_index] == NULL || strlen(key) == 0)
 		return (NULL);
+	if (strcmp(ht->array[elem_index]->key, key) == 0)
+		return (ht->array[elem_index]->value);
 
 	current = ht->array[elem_index];
 	while (current != NULL)
