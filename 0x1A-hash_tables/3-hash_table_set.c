@@ -11,10 +11,10 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *element = malloc(sizeof(hash_node_t));
 	unsigned long int element_index;
+	hash_node_t *element = malloc(sizeof(hash_node_t));
 
-	if (element == NULL || strlen(key) == 0 || ht == NULL)
+	if (element == NULL || strlen(key) == 0 || Key == NULL || ht == NULL)
 		return (0);
 
 	element->key = strdup(key);
