@@ -20,6 +20,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		return (NULL);
 	}
+	if (elem_index >= ht->size)
+	{
+		return (NULL);
+	}
 	else
 	{
 		current = ht->array[elem_index];
