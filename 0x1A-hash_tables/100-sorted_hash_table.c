@@ -77,6 +77,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			{
 				element->snext = current->snext;
 				element->sprev = current;
+				current->snext->sprev = element;
 				current->snext = element;
 				return (1);
 			}
