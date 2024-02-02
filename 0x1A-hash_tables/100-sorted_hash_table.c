@@ -83,40 +83,36 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  *
  * Return: Void
  */
-void place_in_sorted_list(shash_table_t *ht, shash_node_t *element)
-{
-	shash_node_t *current;
+void place_in_sorted_list(shash_table_t *ht, shash_node_t *element) {
+    shash_node_t *current;
 
-	if (ht->shead == NULL)
-	{
-		ht->shead = ht->stail = element;
-	}
-	else
-	{
-		current = ht->shead;
-		if (strcmp(current->key, element->key) >= 0)
-		{
-			element->snext = current;
-			current->sprev = element;
-			ht->shead = element;
-			return;
-		}
-		while (current->snext != NULL)
-		{
-			if (strcmp(current->snext->key, element->key) >= 0)
-			{
-				element->snext = current->snext;
-				element->sprev = current;
-				current->snext->sprev = element;
-				current->snext = element;
-				return;
-			}
-			current = current->snext;
-		}
-		element->sprev = current;
-		current->snext = element;
-		ht->stail = element;
-	}
+    if (ht->shead == NULL) {
+        ht->shead = ht->stail = element;
+        return;
+    }
+
+    current = ht->shead;
+    if (strcmp(current->key, element->key) >= 0) {
+        element->snext = current;
+        current->sprev = element;
+        ht->shead = element;
+        return;
+    }
+
+    while (current->snext != NULL) {
+        if (strcmp(current->snext->key, element->key) >= 0) {
+            element->snext = current->snext;
+            element->sprev = current;
+            current->snext->sprev = element;
+            current->snext = element;
+            return;
+        }
+        current = current->snext;
+    }
+
+    element->sprev = current;
+    current->snext = element;
+    ht->stail = element;
 }
 
 
