@@ -44,19 +44,19 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index = key_index((const unsigned char *)key, ht->size);
+	unsigned long int index;
+
+	if (ht == NULL)
+		return (0);
+	index = key_index((const unsigned char *)key, ht->size);
 	shash_node_t *element = malloc(sizeof(shash_node_t));
 
-	if (element == NULL || strlen(key) == 0 || ht == NULL)
+	if (element == NULL || strlen(key) == 0)
 		return (0);
 	element->key = strdup(key);
-	if (element->key == NULL) {
-		free(element);
-		return (0);
-	}
 	element->value = strdup(value);
-	if (element->value == NULL) {
-		free(element->key);
+	if (element->key == NULL || element->value == NULL)i
+	{
 		free(element);
 		return (0);
 	}
@@ -71,7 +71,10 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		free(ht->array[index]->value);
 		ht->array[index]->value = strdup(value);
 		if ((ht->array[index]->value) == NULL)
+		{
+			free(element);
 			return (0);
+		}
 		free(element->key);
 		free(element->value);
 		free(element);
