@@ -168,7 +168,7 @@ void table_print_helper(const shash_table_t *ht, int reverse)
 	int execute = 0;
 	shash_node_t *current;
 
-	if (ht->shead == NULL)
+	if (ht == NULL || ht->shead == NULL)
 		return;
 
 	printf("{");
