@@ -45,6 +45,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
+	int _free = 0;
 	shash_node_t *element = malloc(sizeof(shash_node_t));
 
 	if (element == NULL || strlen(key) == 0 || ht == NULL)
@@ -72,16 +73,14 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			free(element);
 			return (0);
 		}
-		free(element->key);
-		free(element->value);
-		free(element);
+		_free = 1;
 	}
 	else
 	{
 		element->next = ht->array[index];
 		ht->array[index] = element;
 	}
-	place_in_sorted_list(ht, element);
+	place_in_sorted_list(ht, element, _free);
 
 	return (1);
 }
@@ -91,10 +90,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  * place_in_sorted_list - put an element in the list, but sorted
  * @ht: The hash table
  * @element: The element to be placed
+ * @_free: if one the elem must freed after use imediatery
+ * 			becouse we was supposed to update the existing value
  *
  * Return: Void
  */
-void place_in_sorted_list(shash_table_t *ht, shash_node_t *element)
+void place_in_sorted_list(shash_table_t *ht, shash_node_t *element, int _free)
 {
 	shash_node_t *current;
 
@@ -127,6 +128,12 @@ void place_in_sorted_list(shash_table_t *ht, shash_node_t *element)
 		element->sprev = current;
 		current->snext = element;
 		ht->stail = element;
+	}
+	if (_free == 1)
+	{
+		free(element->key);
+		free(element->value);
+		free(element);
 	}
 }
 
