@@ -45,17 +45,14 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-
-	if (ht == NULL)
-		return (0);
-	index = key_index((const unsigned char *)key, ht->size);
 	shash_node_t *element = malloc(sizeof(shash_node_t));
 
-	if (element == NULL || strlen(key) == 0)
+	if (element == NULL || strlen(key) == 0 || ht == NULL)
 		return (0);
+	index = key_index((const unsigned char *)key, ht->size);
 	element->key = strdup(key);
 	element->value = strdup(value);
-	if (element->key == NULL || element->value == NULL)i
+	if (element->key == NULL || element->value == NULL)
 	{
 		free(element);
 		return (0);
