@@ -51,6 +51,8 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 	element->key = strdup(key);
 	element->value = strdup(value);
+	if (element->key == NULL || element->value == NULL)
+		return (0);
 	element->next = element->sprev = element->snext = NULL;
 
 	if (ht->array[index] == NULL)
