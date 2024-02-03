@@ -91,7 +91,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  * @ht: The hash table
  * @element: The element to be placed
  * @_free: if one the elem must freed after use imediatery
- * 			becouse we was supposed to update the existing value
+ *			becouse we was supposed to update the existing value
  *
  * Return: Void
  */
